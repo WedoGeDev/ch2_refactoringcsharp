@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34221.43
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Refactoring_CaloriesCalculator", "Refactoring_CaloriesCalculator\Refactoring_CaloriesCalculator.csproj", "{D1098554-E371-4C1B-AE6D-11A42752C470}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D1098554-E371-4C1B-AE6D-11A42752C470}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1098554-E371-4C1B-AE6D-11A42752C470}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1098554-E371-4C1B-AE6D-11A42752C470}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1098554-E371-4C1B-AE6D-11A42752C470}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {21114AEE-6F88-4792-B3DC-92FF52814964}
+	EndGlobalSection
+EndGlobal
