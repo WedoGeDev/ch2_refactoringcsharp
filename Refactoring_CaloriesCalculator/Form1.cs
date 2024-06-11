@@ -13,6 +13,8 @@ namespace Refactoring_CaloriesCalculator
 {
     public partial class Form1 : Form
     {
+        public Patient Patient { get; set; }
+
         public Form1()
         {
             InitializeComponent();
@@ -20,9 +22,20 @@ namespace Refactoring_CaloriesCalculator
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
+            Patient = new Patient();
+
             ClearResults();
 
             if (!UserInputValid()) return;
+
+            Patient.Gender = rbtnMale.Checked
+                ? Gender.Male
+                : Gender.Female;
+
+            Patient.WeightInPounds = Convert.ToDouble(txtWeight.Text);
+            Patient.HeightInInches = (Convert.ToDouble(txtFeet.Text) * 12)
+                + Convert.ToDouble(txtInches.Text);
+            Patient.Age = Convert.ToDouble(txtAge.Text);
 
             if (rbtnMale.Checked)
             {
@@ -45,38 +58,6 @@ namespace Refactoring_CaloriesCalculator
                 Convert.ToDouble(txtWeight.Text),
                 Convert.ToDouble(txtIdealWeigth.Text))
                 .ToString();
-        }
-
-        private double IdealBodyWeightFemale(double heightInInches)
-        {
-            return (45.5 + (2.3 * (heightInInches - 60))) * 2.2046;
-        }
-
-        private double IdealBodyWeightMale(double heightInInches)
-        {
-            return (50 + (2.3 * (heightInInches - 60))) * 2.2046;
-        }
-
-        private double DailyCaloriesRecommendedFemale(double weightInPounds, double heightInInches, double age)
-        {
-            return (655
-                + (4.3 * weightInPounds)
-                + (4.7 * heightInInches)
-                - 4.7 * age);
-        }
-
-        private double DailyCaloriesRecommendedMale(double weightInPounds, double heightInInches, double age)
-        {
-            return (66
-                + (6.3 * weightInPounds)
-                + (12.9 * heightInInches)
-                - 6.8 * age);
-        }
-
-        private double DistanceFromIdealWeight(double actualWeightInPounds, double idealWeightInPounds)
-        {
-            return actualWeightInPounds
-                   - idealWeightInPounds;
         }
 
         private bool UserInputValid()
