@@ -22,42 +22,23 @@ namespace Refactoring_CaloriesCalculator
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
-            Patient = new Patient();
-
             ClearResults();
 
             if (!UserInputValid()) return;
 
-            Patient.Gender = rbtnMale.Checked
-                ? Gender.Male
-                : Gender.Female;
+            if (rbtnMale.Checked)
+                Patient = new MalePatient();
+            else
+                Patient = new FemalePatient();
 
             Patient.WeightInPounds = Convert.ToDouble(txtWeight.Text);
             Patient.HeightInInches = (Convert.ToDouble(txtFeet.Text) * 12)
                 + Convert.ToDouble(txtInches.Text);
             Patient.Age = Convert.ToDouble(txtAge.Text);
 
-            if (rbtnMale.Checked)
-            {
-                txtCalories.Text = DailyCaloriesRecommendedMale(Convert.ToDouble(txtWeight.Text), ((Convert.ToDouble(txtFeet.Text) * 12)
-                    + Convert.ToDouble(txtInches.Text)), Convert.ToDouble(txtAge.Text)).ToString();
-                txtIdealWeigth.Text = IdealBodyWeightMale(
-                    (Convert.ToDouble(txtFeet.Text) * 12)
-                    + Convert.ToDouble(txtInches.Text)).ToString();
-            }
-            else
-            {
-                txtCalories.Text = DailyCaloriesRecommendedFemale(Convert.ToDouble(txtWeight.Text), ((Convert.ToDouble(txtFeet.Text) * 12)
-                    + Convert.ToDouble(txtInches.Text)), Convert.ToDouble(txtAge.Text)).ToString();
-                txtIdealWeigth.Text = IdealBodyWeightFemale(
-                    (Convert.ToDouble(txtFeet.Text) * 12)
-                    + Convert.ToDouble(txtInches.Text)).ToString();
-            }
-
-            txtDistance.Text = DistanceFromIdealWeight(
-                Convert.ToDouble(txtWeight.Text),
-                Convert.ToDouble(txtIdealWeigth.Text))
-                .ToString();
+            txtCalories.Text = Patient.DailyCaloriesRecommended().ToString();
+            txtIdealWeigth.Text = Patient.IdealBodyWeight().ToString();
+            txtDistance.Text = Patient.DistanceFromIdealWeight().ToString();
         }
 
         private bool UserInputValid()
