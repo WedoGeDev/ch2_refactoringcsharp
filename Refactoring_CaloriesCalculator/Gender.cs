@@ -1,4 +1,5 @@
-﻿namespace Refactoring_CaloriesCalculator
+﻿
+namespace Refactoring_CaloriesCalculator
 {
     public enum Gender
     {
